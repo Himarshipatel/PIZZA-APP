@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Button } from "reactstrap";
+import { Col, Button, Container } from "reactstrap";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { order } from "../actions/fetchData.js";
@@ -60,7 +60,7 @@ const Form = () => {
   };
 
   return (
-    <div>
+    <Container fluid={true}>
       <Col className="form">
         <div className="yourdetails">Your Details</div>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -176,7 +176,7 @@ const Form = () => {
           </div>
         </form>
       </Col>
-    </div>
+    </Container>
   );
 };
 export default Form;

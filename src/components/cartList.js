@@ -33,24 +33,25 @@ const CartList = () => {
       <Col className="yourorder">
         {cart.map((i, j) => (
           <ul key={j}>
-            <div className="deskdiv">
-              <Row className="ordersrow">
-                <Col className="displaydesc" sm="6">
+            <Row className="ordersrow">
+              <Col className="displaydesc" sm="6">
+                <div>
                   <img
                     src={i.image}
                     alt="loading..."
-                    width="400px"
-                    height="200px"
+                    width="180px"
+                    height="180px"
                   />
-                </Col>
-                <Col className="diapaydetail">
-                  <h3>{i.name}</h3>
-                  <p> Ingredient :</p>
-                  <p>Ingredient :{i.description}</p>
-                  <p>Quantity : {i.quantity}</p>
-                  <p>Price : ${i.price}</p>
+                </div>
+              </Col>
+              <Col className="diapaydetail" sm="6">
+                <h3>{i.name}</h3>
 
-                  {/* <Row>
+                <p>Ingredient :{i.description}</p>
+                <p>Quantity : {i.quantity}</p>
+                <p>Price : ${i.price}</p>
+
+                {/* <Row>
                   <Col sm="6">
                     <button onClick={(e) => subtractItem(e, i.id)}>-</button>
 
@@ -68,24 +69,19 @@ const CartList = () => {
                     </Button>
                   </Col>
                 </Row> */}
-                </Col>
-              </Row>
-            </div>
+              </Col>
+            </Row>
           </ul>
         ))}
       </Col>
 
-      <div className="total">
-        <Col>
-          {" "}
-          <Total />
-        </Col>
-        <Col>
-          {" "}
-          <Form />
-        </Col>
-        <br />
-      </div>
+      <Col>
+        <Total />
+      </Col>
+      <Col className="formdetail">
+        <Form />
+      </Col>
+      <br />
     </Container>
   );
 };

@@ -128,6 +128,8 @@ export function order({
         //   progress: undefined,
         // });
         history.push("/success");
+        dispatch(fetchProducts());
+        dispatch(myOrder());
       })
       .catch((error) => {
         dispatch(orderError(error));

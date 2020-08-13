@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "reactstrap";
 import { Col, Row, Container } from "reactstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 const Vieworder = () => {
   return (
     <Container fluid={true}>
@@ -9,12 +11,13 @@ const Vieworder = () => {
         <Col className="ordersuccess">
           congratulation Your Order Placed Successfully
         </Col>
-
-        {/* <Link to="/">
-        <Button color="danger" className="myorder">
-          Back
-        </Button>
-      </Link> */}
+      </Row>
+      <Row>
+        <Link to="/order">
+          <Button color="danger" className="myorder">
+            My Order
+          </Button>
+        </Link>
       </Row>
     </Container>
   );

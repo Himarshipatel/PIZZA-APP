@@ -209,7 +209,6 @@ code {
   display: inline;
 }
 .ordersrow {
-  margin-left: 60px;
 }
 .orderdesc {
   text-align: center;
@@ -239,19 +238,21 @@ code {
 }
 .ordersuccess {
   color: lightgreen;
-
+  border: 1px solid black;
   text-align: center;
   margin-top: 100px;
   margin-bottom: 100px;
   font-size: 40px;
   font-weight: bold;
 }
-/* .myorder {
-  margin-left: 60%;
+.myorder {
   width: 20%;
-  margin-bottom: 10px;
-} */
+  margin-bottom: 30px;
+}
 .yourdetails {
+  color: gray;
+  font-weight: bold;
+  font-size: 20px;
   margin-top: 10px;
   text-align: center;
 }
@@ -282,7 +283,7 @@ code {
 }
 .placeorderbutton {
   margin-bottom: 10px;
-  width: 500px;
+  width: 200px;
 }
 .space {
   margin-top: 10px;
@@ -372,6 +373,12 @@ code {
   .carddrow {
     padding-left: 5%;
   }
+
+  .formdetail {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+  }
 }
 @media only screen and (max-device-width: 425px) {
   .cardd {
@@ -390,6 +397,44 @@ code {
   .moredeal {
     height: 40px;
     margin-bottom: 5px;
+  }
+  .myorderlist {
+    margin-top: 10px;
+  }
+  .orderdesc {
+    margin-top: 250px;
+  }
+  .ordersuccess {
+    margin-top: 300px;
+    font-size: 25px;
+  }
+  .form {
+    width: 300px;
+  }
+  .formdetail {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+  }
+  .flield {
+    width: 300px;
+  }
+  .placeorderbutton {
+    margin-bottom: 10px;
+    width: 150px;
+  }
+  .displaydesc {
+    margin-right: 40px;
+  }
+  .diapaydetail {
+    margin-right: 40px;
+  }
+  .orderlistimg {
+    width: 50px;
+    height: 50px;
+  }
+  .ordersrow {
+    text-align: center;
   }
 }
 @media only screen and (max-device-width: 375px) {
@@ -410,6 +455,38 @@ code {
     height: 40px;
     margin-bottom: 5px;
   }
+  .myorderlist {
+    margin-top: 10px;
+  }
+  .orderdesc {
+    margin-top: 220px;
+  }
+  .ordersuccess {
+    margin-top: 320px;
+    font-size: 25px;
+  }
+  .form {
+    width: 300px;
+  }
+  .formdetail {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+  }
+  .flield {
+    width: 250px;
+  }
+  .placeorderbutton {
+    margin-bottom: 10px;
+    width: 140px;
+  }
+
+  .yourorder {
+    float: right;
+  }
+  .ordersrow {
+    text-align: center;
+  }
 }
 @media only screen and (max-device-width: 320px) {
   .cardd {
@@ -429,8 +506,53 @@ code {
     height: 40px;
     margin-bottom: 5px;
   }
+  .myorderlist {
+    margin-top: 10px;
+  }
+  .orderdesc {
+    margin-top: 215px;
+  }
+  .ordersuccess {
+    margin-top: 280px;
+    font-size: 22px;
+  }
+  .form {
+    width: 300px;
+  }
+  .formdetail {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+  }
+  .flield {
+    width: 200px;
+  }
+  .placeorderbutton {
+    margin-bottom: 10px;
+    width: 120px;
+  }
+  .displaydesc {
+    margin-right: 40px;
+    width: 100px;
+  }
+  .diapaydetail {
+    margin-right: 40px;
+  }
+  .orderlistimg {
+    width: 50px;
+    height: 50px;
+  }
+  .ordersrow {
+    text-align: center;
+  }
 }
 
 .listing {
   list-style: none;
+}
+.successicon {
+  font-size: 70px;
+}
+.successiconrow {
+  border: 1px solid black;
 }
