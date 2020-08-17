@@ -148,10 +148,28 @@ code {
   text-align: left;
 }
 /* --popover-- */
+.popup {
+  position: fixed;
+  background-color: #eeeeee;
+  border-top: 1px solid lightgray;
+}
+.chekorder {
+  text-align: center;
+}
+.vieworderbut {
+  margin-bottom: 5px;
+  width: 100%;
+}
+.totalpopup {
+  font-size: 15px;
+  border: 1px solid black;
+}
 .popoverr {
-  height: 350px;
-  /* width: 400px; */
+  height: 260px;
   overflow-y: scroll;
+}
+.popoverr::-webkit-scrollbar {
+  display: none;
 }
 .display {
   width: 220px;
@@ -219,6 +237,17 @@ code {
 }
 .Image {
   margin-top: 20px;
+}
+.popuppizza {
+}
+.removepopup {
+}
+.removebut {
+  float: right;
+}
+.quantitynum {
+  margin-left: 5px;
+  padding-top: 7px;
 }
 .pizaa {
   text-align: center;

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { add, subtract, removeItemFromCart } from "../redux/actions/Action.js";
 import { Row, Col, Button } from "reactstrap";
 import Image from "react-bootstrap/Image";
-import Total from "./Total.js";
+
 const Popoverr = () => {
   const { cart } = useSelector((state) => ({
     cart: state.products.cart,
@@ -32,28 +32,32 @@ const Popoverr = () => {
           {cart.map((i, j) => (
             <>
               <div key={i.id}>
-                <Image
-                  src={i.image}
-                  alt="loading..."
-                  width="200px"
-                  height="200px"
-                  className="Image"
-                  roundedCircle
-                />
-
-                <h3>{i.name}</h3>
-                {/* <p>Ingredient :</p> */}
-                {/* <Col className="popdesc">{i.description}</Col> */}
-                <p>Price : ${i.price}</p>
-
                 <Row>
-                  <Col sm="5">
+                  <Col>
+                    <Image
+                      src={i.image}
+                      alt="loading..."
+                      width="70px"
+                      height="70px"
+                      className="popuppizza"
+                      roundedCircle
+                    />
+                  </Col>
+                  <Col>{i.name}</Col>
+                  {/* <p>Ingredient :</p> */}
+                  {/* <Col className="popdesc">{i.description}</Col> */}
+                  <Col>
+                    <b>${i.price}</b>
+                  </Col>
+                </Row>
+                <Row className="removepopup">
+                  <Col className="quantitynum">
                     <button onClick={(e) => subtractItem(e, i.id)}>-</button>
                     <button>{i.quantity}</button>
                     <button onClick={(e) => addItem(e, i.id)}>+</button>
                   </Col>
 
-                  <Col sm="4">
+                  <Col className="removebut">
                     <Button
                       color="danger"
                       onClick={(e) => removeItem(e, i.id, i.price * i.quantity)}
@@ -69,9 +73,6 @@ const Popoverr = () => {
           ))}
         </div>
       )}
-
-      <Total />
-      <hr />
     </>
   );
 };

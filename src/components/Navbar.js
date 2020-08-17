@@ -16,7 +16,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import Carousel from "react-bootstrap/Carousel";
 import Approuter from "./Approuter.js";
-
+import Total from "./Total.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
@@ -161,11 +161,18 @@ const Navbarr = (props) => {
                   <PopoverHeader>Added Item</PopoverHeader>
                   <PopoverBody className="popoverr">
                     <Popoverr />
-
-                    <Link to="/cart">
-                      <Button color="danger">Veiw Order</Button>
-                    </Link>
                   </PopoverBody>
+                  <Col className="popup">
+                    <Total />
+
+                    <Col className="chekorder">
+                      <Link to="/cart">
+                        <Button color="danger" className="vieworderbut">
+                          Veiw Order
+                        </Button>
+                      </Link>
+                    </Col>
+                  </Col>
                 </UncontrolledPopover>
               </Col>
 
