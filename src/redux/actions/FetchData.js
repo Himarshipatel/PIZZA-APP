@@ -1,7 +1,5 @@
-import React, { useState } from "react";
 import axios from "axios";
 
-import history from "../history.js";
 import { toast } from "react-toastify";
 import {
   fetchDataRequest,
@@ -13,7 +11,7 @@ import {
   myorderrequest,
   orderSuccess,
   orderError,
-} from "./action";
+} from "./Action";
 
 export function fetchProducts() {
   return (dispatch) => {
@@ -118,15 +116,7 @@ export function order({
       .then((response) => {
         console.log(response);
         dispatch(orderSuccess(response));
-        // toast.success("Order placed successfully", {
-        //   position: "top-center",
-        //   autoClose: 5000,
-        //   hideProgressBar: false,
-        //   closeOnClick: true,
-        //   pauseOnHover: true,
-        //   draggable: true,
-        //   progress: undefined,
-        // });
+
         history.push("/success");
         dispatch(fetchProducts());
         dispatch(myOrder());
@@ -158,11 +148,10 @@ export function myOrder() {
       .get("http://127.0.0.1:8000/api/orders", token)
       .then((response) => {
         console.log(response);
-        dispatch(orderSuccess(response.data.data.orders));
+        dispatch({ type: "myorderSuccess", order: response.data.data.orders });
       })
       .catch((error) => {
         console.log(error);
-        dispatch(orderError(error));
       });
   };
 }

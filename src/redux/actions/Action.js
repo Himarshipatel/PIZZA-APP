@@ -11,7 +11,7 @@ import {
   Login_Error,
   ORDER_SUCCESS,
   ORDER_ERROR,
-} from "./actionType";
+} from "./ActionType.js";
 
 export function fetchDataRequest() {
   return {

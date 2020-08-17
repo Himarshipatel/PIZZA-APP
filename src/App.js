@@ -1,21 +1,20 @@
 import React from "react";
-//import Main from "./components/main";
-import Navbar from "./components/Navbar.js";
+import Navbarr from "./components/Navbar.js";
+import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
-// import { Provider } from "react-redux";
-// import { createStore, applyMiddleware } from "redux";
-// import thunk from "redux-thunk";
-// import rootReducer from "./reducers/rootReducers";
-
-// const store = createStore(rootReducer, applyMiddleware(thunk));
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+import rootReducer from "./redux/reducers/RootReducers";
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 function App() {
   return (
-    // <Provider store={store}>
-    <div className="App">
-      <Navbar />
-    </div>
-    // </Provider>
+    <Provider store={store}>
+      <div>
+        <Navbarr />
+      </div>
+    </Provider>
   );
 }
 

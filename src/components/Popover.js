@@ -1,9 +1,10 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { add, subtract, removeItemFromCart } from "../actions/action";
+import { add, subtract, removeItemFromCart } from "../redux/actions/Action.js";
 import { Row, Col, Button } from "reactstrap";
 import Image from "react-bootstrap/Image";
+import Total from "./Total.js";
 const Popoverr = () => {
   const { cart } = useSelector((state) => ({
     cart: state.products.cart,
@@ -30,9 +31,6 @@ const Popoverr = () => {
         <div>
           {cart.map((i, j) => (
             <>
-              {/* {!i.id ? (
-              <div>no data</div>
-            ) : ( */}
               <div key={i.id}>
                 <Image
                   src={i.image}
@@ -44,8 +42,8 @@ const Popoverr = () => {
                 />
 
                 <h3>{i.name}</h3>
-                <p>Ingredient :</p>
-                <Col className="popdesc">{i.description}</Col>
+                {/* <p>Ingredient :</p> */}
+                {/* <Col className="popdesc">{i.description}</Col> */}
                 <p>Price : ${i.price}</p>
 
                 <Row>
@@ -54,7 +52,7 @@ const Popoverr = () => {
                     <button>{i.quantity}</button>
                     <button onClick={(e) => addItem(e, i.id)}>+</button>
                   </Col>
-                  <br />
+
                   <Col sm="4">
                     <Button
                       color="danger"
@@ -71,6 +69,9 @@ const Popoverr = () => {
           ))}
         </div>
       )}
+
+      <Total />
+      <hr />
     </>
   );
 };

@@ -1,11 +1,9 @@
 import React from "react";
-import { Col, Button, Container } from "reactstrap";
+import { Col, Button, Container, Label } from "reactstrap";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { order } from "../actions/fetchData.js";
+import { order } from "../redux/actions/FetchData.js";
 import { useHistory } from "react-router-dom";
-
-import { Link, BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 import * as Yup from "yup";
 const Form = () => {
@@ -65,6 +63,9 @@ const Form = () => {
         <div className="yourdetails">Your Details</div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="space">
+            <Col className="labell">
+              <Label className="labeling">User Name :</Label>
+            </Col>
             <input
               name="customer_name"
               ref={register}
@@ -80,6 +81,9 @@ const Form = () => {
             )}
           </div>
           <div className="space">
+            <Col className="labell">
+              <Label className="labeling">Email :</Label>
+            </Col>
             <input
               name="customer_email"
               ref={register}
@@ -95,6 +99,9 @@ const Form = () => {
             </div>
           </div>
           <div className="space">
+            <Col className="labell">
+              <Label className="labeling">Mobile No. :</Label>
+            </Col>
             <input
               name="customer_phone"
               ref={register}
@@ -110,6 +117,9 @@ const Form = () => {
             </div>
           </div>
           <div className="space">
+            <Col className="labell">
+              <Label className="labeling">Address 1 :</Label>
+            </Col>
             <input
               name="customer_address_1"
               ref={register}
@@ -125,6 +135,9 @@ const Form = () => {
             </div>
           </div>
           <div className="space">
+            <Col className="labell">
+              <Label className="labeling">Address 2 :</Label>
+            </Col>
             <input
               name="customer_address_2"
               ref={register}
@@ -140,6 +153,9 @@ const Form = () => {
             </div>
           </div>
           <div className="space">
+            <Col className="labell">
+              <Label className="labeling">Area :</Label>
+            </Col>
             <input
               name="customer_address_area"
               ref={register}
@@ -155,6 +171,9 @@ const Form = () => {
             </div>
           </div>
           <div className="space">
+            <Col className="labell">
+              <Label className="labeling">zip Code :</Label>
+            </Col>
             <input
               name="customer_address_zip"
               ref={register}

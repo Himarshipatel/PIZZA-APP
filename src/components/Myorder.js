@@ -1,16 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { order } from "../actions/fetchData.js";
-import { add, subtract, removeItemFromCart } from "../actions/action";
+import { order } from "../redux/actions/FetchData.js";
+
 import { Col, Row, Container, Button } from "reactstrap";
-import Total from "./total.js";
-import Form from "./Form.js";
 import Moment from "react-moment";
 import { useHistory } from "react-router-dom";
 
-import { Switch, BrowserRouter, Link, Route } from "react-router-dom";
-import Navbar from "./Navbar";
-import { myOrder } from "../actions/fetchData";
+import { myOrder } from "../redux/actions/FetchData";
 
 const Myorder = () => {
   const { order } = useSelector((state) => ({
@@ -37,22 +33,14 @@ const Myorder = () => {
             .map((i, j) => (
               <li key={j} className="listing">
                 <Moment format="Do MMM YYYY">{i.created_at}</Moment>
-                <br />
                 order number:{i.order_number}
-                <br />
                 Status:{i.status}
-                <br />
                 Total : {i.subtotal}
-                <br />
                 Tax:{i.tax}
-                <br />
                 Delivery Charge: {i.delivery_charge}
-                <br />
                 Total Charge :
                 {(i.subtotal = i.subtotal + i.tax + i.delivery_charge)}
-                <br />
                 <hr />
-                <br />
               </li>
             ))}
         </Col>

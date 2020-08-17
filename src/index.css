@@ -238,7 +238,7 @@ code {
 }
 .ordersuccess {
   color: lightgreen;
-  border: 1px solid black;
+
   text-align: center;
   margin-top: 100px;
   margin-bottom: 100px;
@@ -288,9 +288,11 @@ code {
 .space {
   margin-top: 10px;
 }
-
+.pizzanamecolor {
+  color: green;
+  font-size: 22px;
+}
 .pizzaname {
-  font-size: 20px;
   text-align: center;
   border: 1px solid black;
 }
@@ -320,8 +322,21 @@ code {
   font-size: 22px;
 }
 /* ------------------------- */
+.ingre {
+  border: 1px solid black;
+}
+.price {
+  font-weight: bold;
+  font-size: 18px;
+}
+.labell {
+  text-align: left;
+}
+.labeling {
+  margin-left: 300px;
+}
 .navmenu {
-  height: 615px;
+  height: 550px;
   border-bottom: 1px solid lightgrey;
 }
 .bansidebar {
@@ -349,7 +364,7 @@ code {
   margin-left: 30px;
 }
 .carddrow {
-  padding-left: 5%;
+  padding-left: 0%;
 }
 
 @media only screen and (max-device-width: 1024px) {
@@ -361,6 +376,10 @@ code {
   }
   .carddrow {
     padding-left: 4%;
+  }
+  .navmenu {
+    height: 650px;
+    border-bottom: 1px solid lightgrey;
   }
 }
 @media only screen and (max-device-width: 768px) {
@@ -378,6 +397,10 @@ code {
     justify-content: center;
     display: flex;
     align-items: center;
+  }
+  .navmenu {
+    height: 600px;
+    border-bottom: 1px solid lightgrey;
   }
 }
 @media only screen and (max-device-width: 425px) {
@@ -555,4 +578,14 @@ code {
 }
 .successiconrow {
   border: 1px solid black;
+}
+.description {
+}
+.ingredientt {
+}
+.ingribold {
+  margin-right: 5px;
+}
+.ingricolor {
+  color: gray;
 }

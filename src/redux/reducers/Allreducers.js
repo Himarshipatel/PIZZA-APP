@@ -12,6 +12,7 @@ let initialState = {
 };
 
 function products(state = initialState, action) {
+  console.log(cart);
   var foundIndex = 0;
   var foundIndexCart = 0;
   var { item, cart, total } = state;
@@ -118,7 +119,12 @@ function products(state = initialState, action) {
       };
     case " ORDER_ERROR":
       return { ...state, error: action.payload };
-
+    case "myorderSuccess":
+      return {
+        ...state,
+        loading: false,
+        order: action.order,
+      };
     default:
       return state;
   }

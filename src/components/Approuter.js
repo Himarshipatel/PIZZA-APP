@@ -1,9 +1,9 @@
 import React from "react";
-import { Link, BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-import Vieworder from "./Vieworder.js";
-import Myorder from "./Myorder.js";
-import CartList from "./cartList.js";
-import ItemList from "./itemList.js";
+import { Switch, Route, Redirect } from "react-router-dom";
+import Vieworder from "./ViewOrder.js";
+import Myorder from "./MyOrder.js";
+import CartList from "./CartList.js";
+import ItemList from "./ItemList.js";
 const Approuter = () => {
   const auth = localStorage.getItem("auth");
   console.log("auth");
@@ -11,7 +11,6 @@ const Approuter = () => {
     <div>
       {auth ? (
         <div>
-          {/* <Redirect to="/"></Redirect> */}
           <Switch>
             <Route path="/success" component={Vieworder} />
 
