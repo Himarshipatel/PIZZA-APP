@@ -127,7 +127,11 @@ code {
 /* --form-- */
 .form {
   margin-top: 30px;
+
   border: 1px solid gray;
+}
+.text-danger {
+  text-align: left;
 }
 .heading {
   text-align: center;
@@ -364,9 +368,7 @@ code {
 .labell {
   text-align: left;
 }
-.labeling {
-  margin-left: 300px;
-}
+
 .navmenu {
   height: 550px;
   border-bottom: 1px solid lightgrey;

@@ -33,6 +33,7 @@ const Myorder = () => {
             .map((i, j) => (
               <li key={j} className="listing">
                 <Moment format="Do MMM YYYY">{i.created_at}</Moment>
+                <Moment format="HH:mm:ss">{i.created_at}</Moment>
                 order number:{i.order_number}
                 Status:{i.status}
                 Total : {i.subtotal}

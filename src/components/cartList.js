@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { add, subtract, removeItemFromCart } from "../redux/actions/Action.js";
 import { Col, Row, Container, Button } from "reactstrap";
 import Total from "./Total.js";
-import Form from "./Form.js";
+import Formm from "./Form.js";
 
 const CartList = () => {
   const { cart } = useSelector((state) => ({
@@ -61,7 +61,7 @@ const CartList = () => {
         <Total />
       </Col>
       <Col className="formdetail">
-        <Form />
+        <Formm />
       </Col>
     </Container>
   );

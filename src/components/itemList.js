@@ -6,7 +6,7 @@ import { fetchProducts } from "../redux/actions/FetchData";
 
 import { Card, Row, Col, Container, Button } from "reactstrap";
 import Image from "react-bootstrap/Image";
-
+import Banner from "./Banner.js";
 const ItemList = (props) => {
   const { item } = useSelector((state) => ({
     item: state.products.item,
@@ -31,6 +31,7 @@ const ItemList = (props) => {
 
   return (
     <>
+      <Banner />
       <div className="itemslist">
         <div>
           <h3 className="natural">natural Ingredient</h3>

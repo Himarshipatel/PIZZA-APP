@@ -12,7 +12,7 @@ import * as Yup from "yup";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { signinUser } from "../redux/actions/FetchData.js";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import Carousel from "react-bootstrap/Carousel";
 import Approuter from "./Approuter.js";
@@ -27,9 +27,10 @@ import {
   ModalBody,
   Container,
   ModalFooter,
-  Input,
   Label,
+  Form,
   FormGroup,
+  Input,
 } from "reactstrap";
 import {
   Collapse,
@@ -46,7 +47,6 @@ import {
   NavbarText,
 } from "reactstrap";
 import { Redirect } from "react-router-dom";
-import Form from "./Form.js";
 
 import Image from "react-bootstrap/Image";
 
@@ -59,12 +59,12 @@ const Navbarr = (props) => {
   console.log(toggle);
   // var auth = localStorage.getItem("auth");
   const loginSchema = Yup.object().shape({
-    name: Yup.string().trim().required("Invalid name"),
-    email: Yup.string().email().required("Invalid email"),
+    name: Yup.string().trim().required(),
+    email: Yup.string().email().required(),
   });
   const dispatch = useDispatch();
 
-  const { register, handleSubmit, errors } = useForm({
+  const { register, handleSubmit, errors, control } = useForm({
     validationSchema: loginSchema,
   });
   const [isOpen, setIsOpen] = useState(false);
@@ -155,89 +155,7 @@ const Navbarr = (props) => {
         </Navbar>
 
         {/* --new navbar-- */}
-        {/*------new banner---------*/}
-        <Container fluid={true}>
-          <Row className="navmenu">
-            <Col className="banlabel" sm="6">
-              <h1>Cheesy Pizza</h1>
 
-              <Col className="subtitle">
-                Incididunt ut labourdolore megna aliqua.urenim
-              </Col>
-              <Col className="subtitle">
-                add minim vemiam,quis nostrud exercitation
-              </Col>
-              <Button color="danger" className="moredeal">
-                More deals
-              </Button>
-            </Col>
-            {/* ------second col------ */}
-            <Col className="bansidebar" sm="6">
-              {/* <Col className="cart">
-                <Button id="PopoverLegacy" type="button" className="cartbut">
-                  <FontAwesomeIcon
-                    icon={faShoppingCart}
-                    color="white"
-                    className="carticon"
-                  />
-                </Button>
-                <UncontrolledPopover
-                  trigger="legacy"
-                  placement="bottom"
-                  target="PopoverLegacy"
-                >
-                  <PopoverHeader>Added Item</PopoverHeader>
-                  <PopoverBody className="popoverr">
-                    <Popoverr />
-                  </PopoverBody>
-                  <Col className="popup">
-                    <Total />
-
-                    <Col className="chekorder">
-                      <Link to="/cart">
-                        <Button color="danger" className="vieworderbut">
-                          Veiw Order
-                        </Button>
-                      </Link>
-                    </Col>
-                  </Col>
-                </UncontrolledPopover>
-              </Col> */}
-
-              <Col className="offer">Special Offer</Col>
-
-              <Col className="pizaa">
-                <Carousel interval={1500}>
-                  <Carousel.Item>
-                    <Image
-                      src="https://images.dominos.co.in/new_cheese_n_corn.jpg"
-                      alt=""
-                      roundedCircle
-                      className="bannerimg"
-                    />
-                  </Carousel.Item>
-                  <Carousel.Item>
-                    <Image
-                      src="https://images.dominos.co.in/new_fresh_veggie.jpg"
-                      alt=""
-                      roundedCircle
-                      className="bannerimg"
-                    />
-                  </Carousel.Item>
-                  <Carousel.Item>
-                    <Image
-                      src="https://images.dominos.co.in/updated_paneer_makhani.jpg"
-                      alt=""
-                      roundedCircle
-                      className="bannerimg"
-                    />
-                  </Carousel.Item>
-                </Carousel>
-              </Col>
-            </Col>
-          </Row>
-        </Container>
-        {/*------new banner---------*/}
         <Approuter />
 
         <Modal isOpen={modal} toggle={toggle} className={className}>
@@ -249,7 +167,20 @@ const Navbarr = (props) => {
                 <Label>User Name :</Label>
               </Col>
               <Col>
-                <input
+                <FormGroup>
+                  <Controller
+                    placeholder="Enter Name"
+                    as={Input}
+                    ref={register}
+                    control={control}
+                    name="name"
+                    defaultValue=""
+                  />
+                  {errors.name && (
+                    <p className="text-danger">* {errors.name.message}</p>
+                  )}
+                </FormGroup>
+                {/* <input
                   name="name"
                   ref={register}
                   placeholder="Enter user name"
@@ -257,14 +188,27 @@ const Navbarr = (props) => {
                 />
                 {errors.name && (
                   <small className="text-danger">*{errors.name.message}</small>
-                )}{" "}
+                )}{" "} */}
               </Col>
               <Col>
                 <Label>Email :</Label>
               </Col>
               <Col>
-                <input
-                  name="Enter email"
+                <FormGroup>
+                  <Controller
+                    placeholder="Enter Name"
+                    as={Input}
+                    ref={register}
+                    control={control}
+                    name="email"
+                    defaultValue=""
+                  />
+                  {errors.email && (
+                    <p className="text-danger">* {errors.email.message}</p>
+                  )}
+                </FormGroup>
+                {/* <input
+                  name="email"
                   ref={register}
                   placeholder="Enter Email"
                   className="username"
@@ -272,7 +216,7 @@ const Navbarr = (props) => {
 
                 {errors.email && (
                   <small className="text-danger">*{errors.email.message}</small>
-                )}
+                )} */}
               </Col>
               <Col className="space">
                 <Button className="loginbut" color="success">
