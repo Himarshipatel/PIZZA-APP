@@ -122,6 +122,34 @@ const Navbarr = (props) => {
               <Button color="success" onClick={toggle} className="loginbutton">
                 Login
               </Button>
+
+              <Button id="PopoverLegacy" type="button" className="cartbut">
+                <FontAwesomeIcon
+                  icon={faShoppingCart}
+                  color="white"
+                  className="carticon"
+                />
+              </Button>
+              <UncontrolledPopover
+                trigger="legacy"
+                placement="bottom"
+                target="PopoverLegacy"
+              >
+                <PopoverHeader>Added Item</PopoverHeader>
+                <PopoverBody className="popoverr">
+                  <Popoverr />
+                </PopoverBody>
+                <Col className="popup">
+                  <Total />
+                  <Col className="chekorder">
+                    <Link to="/cart">
+                      <Button color="danger" className="vieworderbut">
+                        Veiw Order
+                      </Button>
+                    </Link>
+                  </Col>
+                </Col>
+              </UncontrolledPopover>
             </NavbarText>
           </Collapse>
         </Navbar>
@@ -145,7 +173,7 @@ const Navbarr = (props) => {
             </Col>
             {/* ------second col------ */}
             <Col className="bansidebar" sm="6">
-              <Col className="cart">
+              {/* <Col className="cart">
                 <Button id="PopoverLegacy" type="button" className="cartbut">
                   <FontAwesomeIcon
                     icon={faShoppingCart}
@@ -174,7 +202,7 @@ const Navbarr = (props) => {
                     </Col>
                   </Col>
                 </UncontrolledPopover>
-              </Col>
+              </Col> */}
 
               <Col className="offer">Special Offer</Col>
 
