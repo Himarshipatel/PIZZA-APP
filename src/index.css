@@ -623,3 +623,12 @@ code {
 .ingricolor {
   color: gray;
 }
+.pizzasubtotallist {
+  list-style: none;
+}
+.tablehead {
+  background-color: lightgray;
+}
+.totalcharge {
+  font-weight: bold;
+}

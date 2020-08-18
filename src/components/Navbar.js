@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link, BrowserRouter } from "react-router-dom";
+import { Link, BrowserRouter, useHistory } from "react-router-dom";
+
 import {
   Row,
   Col,
@@ -57,7 +58,7 @@ const Navbarr = (props) => {
 
   const toggle = () => setModal(!modal);
   console.log(toggle);
-  // var auth = localStorage.getItem("auth");
+
   const loginSchema = Yup.object().shape({
     name: Yup.string().trim().required(),
     email: Yup.string().email().required(),
@@ -73,6 +74,17 @@ const Navbarr = (props) => {
   const onSubmit = ({ name, email }) => {
     dispatch(signinUser({ name, email, setModal }));
   };
+  const history = useHistory();
+  const auth = localStorage.getItem("auth");
+  console.log(auth);
+  const logout = () => {
+    const auth = localStorage.clear("auth");
+    console.log(auth);
+    if (auth === undefined) {
+      history.push("/");
+    }
+  };
+
   return (
     <>
       <BrowserRouter>
@@ -119,10 +131,26 @@ const Navbarr = (props) => {
             </Nav>
 
             <NavbarText className="adminname text-white">
-              <Button color="success" onClick={toggle} className="loginbutton">
+              {/* <Button color="success" onClick={toggle} className="loginbutton">
                 Login
-              </Button>
-
+              </Button> */}
+              {auth ? (
+                <Button
+                  color="success"
+                  onClick={logout}
+                  className="loginbutton"
+                >
+                  Logout
+                </Button>
+              ) : (
+                <Button
+                  color="success"
+                  onClick={toggle}
+                  className="loginbutton"
+                >
+                  Login
+                </Button>
+              )}
               <Button id="PopoverLegacy" type="button" className="cartbut">
                 <FontAwesomeIcon
                   icon={faShoppingCart}
