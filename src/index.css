@@ -632,3 +632,30 @@ code {
 .totalcharge {
   font-weight: bold;
 }
+@media only screen and (max-device-width: 320px) {
+  .orderdesc {
+    margin-top: 5px;
+  }
+  .tabell {
+    font-size: 6px;
+  }
+}
+@media only screen and (max-device-width: 375px) {
+  .orderdesc {
+    margin-top: 5px;
+  }
+  .tabell {
+    font-size: 8px;
+  }
+}
+@media only screen and (max-device-width: 425px) {
+  .orderdesc {
+    margin-top: 5px;
+  }
+  .tabell {
+    font-size: 10px;
+  }
+}
+.tabell {
+  text-align: center;
+}
