@@ -34,8 +34,7 @@ const Formm = () => {
   });
   const dispatch = useDispatch();
   const history = useHistory();
-  const { cart, items } = useSelector((state) => ({
-    cart: state.products.cart,
+  const { items } = useSelector((state) => ({
     items: state.products.cart,
   }));
 

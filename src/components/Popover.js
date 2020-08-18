@@ -25,54 +25,47 @@ const Popoverr = () => {
 
   return (
     <>
-      {cart == 0 ? (
-        <div className="cartempty">Cart Empty</div>
-      ) : (
-        <div>
-          {cart.map((i, j) => (
-            <>
-              <div key={i.id}>
-                <Row>
-                  <Col>
-                    <Image
-                      src={i.image}
-                      alt="loading..."
-                      width="70px"
-                      height="70px"
-                      className="popuppizza"
-                      roundedCircle
-                    />
-                  </Col>
-                  <Col>{i.name}</Col>
-                  {/* <p>Ingredient :</p> */}
-                  {/* <Col className="popdesc">{i.description}</Col> */}
-                  <Col>
-                    <b>${i.price}</b>
-                  </Col>
-                </Row>
-                <Row className="removepopup">
-                  <Col className="quantitynum">
-                    <button onClick={(e) => subtractItem(e, i.id)}>-</button>
-                    <button>{i.quantity}</button>
-                    <button onClick={(e) => addItem(e, i.id)}>+</button>
-                  </Col>
+      <div>
+        {cart.map((i, j) => (
+          <>
+            <div key={i.id}>
+              <Row>
+                <Col>
+                  <Image
+                    src={i.image}
+                    alt="loading..."
+                    width="70px"
+                    height="70px"
+                    className="popuppizza"
+                    roundedCircle
+                  />
+                </Col>
+                <Col>{i.name}</Col>
 
-                  <Col className="removebut">
-                    <Button
-                      color="danger"
-                      onClick={(e) => removeItem(e, i.id, i.price * i.quantity)}
-                    >
-                      Remove
-                    </Button>
-                  </Col>
-                </Row>
+                <Col>
+                  <b>${i.price}</b>
+                </Col>
+              </Row>
+              <Row className="removepopup">
+                <Col className="quantitynum">
+                  <button onClick={(e) => subtractItem(e, i.id)}>-</button>
+                  <button>{i.quantity}</button>
+                  <button onClick={(e) => addItem(e, i.id)}>+</button>
+                </Col>
 
-                <hr />
-              </div>
-            </>
-          ))}
-        </div>
-      )}
+                <Col className="removebut">
+                  <Button
+                    color="danger"
+                    onClick={(e) => removeItem(e, i.id, i.price * i.quantity)}
+                  >
+                    Remove
+                  </Button>
+                </Col>
+              </Row>
+            </div>
+          </>
+        ))}
+      </div>
     </>
   );
 };

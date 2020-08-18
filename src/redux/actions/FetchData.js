@@ -7,8 +7,6 @@ import {
   fetchDataError,
   signinUserSuccess,
   SigninError,
-  authError,
-  myorderrequest,
   orderSuccess,
   orderError,
 } from "./Action";
@@ -88,7 +86,7 @@ export function order({
   history,
 }) {
   console.log(items);
-  const orders = { items: items };
+
   const tokenn = localStorage.getItem("auth");
   const token = {
     headers: { Authorization: `Bearer ${tokenn}` },
@@ -123,7 +121,7 @@ export function order({
       })
       .catch((error) => {
         dispatch(orderError(error));
-        toast.error("Order not placed", {
+        toast.error(error.response.data.message, {
           position: "top-center",
           autoClose: 5000,
           hideProgressBar: false,
@@ -132,7 +130,7 @@ export function order({
           draggable: true,
           progress: undefined,
         });
-        console.log(error);
+        console.log(error.response.data.message);
       });
   };
 }
@@ -143,7 +141,6 @@ export function myOrder() {
   };
   console.log(token);
   return (dispatch) => {
-    // dispatch(myorderrequest());
     axios
       .get("http://127.0.0.1:8000/api/orders", token)
       .then((response) => {

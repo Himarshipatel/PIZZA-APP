@@ -246,8 +246,13 @@ code {
   margin-top: 20px;
 }
 .popuppizza {
+  margin-top: 5px;
 }
 .removepopup {
+  margin-top: 3px;
+
+  padding-bottom: 3px;
+  border-bottom: 1px solid lightgray;
 }
 .removebut {
   float: right;
@@ -632,22 +637,7 @@ code {
 .totalcharge {
   font-weight: bold;
 }
-@media only screen and (max-device-width: 320px) {
-  .orderdesc {
-    margin-top: 5px;
-  }
-  .tabell {
-    font-size: 6px;
-  }
-}
-@media only screen and (max-device-width: 375px) {
-  .orderdesc {
-    margin-top: 5px;
-  }
-  .tabell {
-    font-size: 8px;
-  }
-}
+
 @media only screen and (max-device-width: 425px) {
   .orderdesc {
     margin-top: 5px;
@@ -658,4 +648,21 @@ code {
 }
 .tabell {
   text-align: center;
+}
+@media only screen and (max-device-width: 320px) {
+  .orderdesc {
+    margin-top: 5px;
+  }
+  .tabell {
+    font-size: 6px;
+    font-weight: bold;
+  }
+}
+@media only screen and (max-device-width: 375px) {
+  .orderdesc {
+    margin-top: 5px;
+  }
+  .tabell {
+    font-size: 8px;
+  }
 }

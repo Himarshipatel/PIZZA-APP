@@ -1,11 +1,10 @@
 let initialState = {
   loading: false,
-  cart: null,
+
+  cart: [],
   order: [],
   item: [],
-  cart: [],
   total: 0,
-  subtotal: 0,
   error: null,
   authenticated: false,
   username: [],
@@ -13,10 +12,9 @@ let initialState = {
 };
 
 function products(state = initialState, action) {
-  console.log(cart);
   var foundIndex = 0;
   var foundIndexCart = 0;
-  var { item, cart, total, subtotal } = state;
+  var { item, cart, total } = state;
   switch (action.type) {
     case "FETCH_DATA_REQUEST":
       return {

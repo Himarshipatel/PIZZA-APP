@@ -1,17 +1,7 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 import Image from "react-bootstrap/Image";
-import {
-  Row,
-  Col,
-  Button,
-  Container,
-  UncontrolledCarousel,
-  CarouselItem,
-  CarouselControl,
-  CarouselIndicators,
-  CarouselCaption,
-} from "reactstrap";
+import { Row, Col, Button, Container } from "reactstrap";
 
 const Banner = () => {
   return (

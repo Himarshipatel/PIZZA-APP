@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { Link, BrowserRouter, useHistory } from "react-router-dom";
+import { Link, BrowserRouter } from "react-router-dom";
 
 import {
-  Row,
   Col,
   Button,
   PopoverHeader,
@@ -14,8 +13,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { signinUser } from "../redux/actions/FetchData.js";
 import { useForm, Controller } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
-import Carousel from "react-bootstrap/Carousel";
+import { useDispatch } from "react-redux";
+
 import Approuter from "./Approuter.js";
 import Total from "./Total.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -26,10 +25,7 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
-  Container,
-  ModalFooter,
   Label,
-  Form,
   FormGroup,
   Input,
 } from "reactstrap";
@@ -40,24 +36,15 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
   NavbarText,
 } from "reactstrap";
-import { Redirect } from "react-router-dom";
-
-import Image from "react-bootstrap/Image";
 
 const Navbarr = (props) => {
-  const { buttonLabel, className } = props;
+  const { className } = props;
 
   const [modal, setModal] = useState(false);
 
   const toggle = () => setModal(!modal);
-  console.log(toggle);
 
   const loginSchema = Yup.object().shape({
     name: Yup.string().trim().required(),
@@ -74,22 +61,17 @@ const Navbarr = (props) => {
   const onSubmit = ({ name, email }) => {
     dispatch(signinUser({ name, email, setModal }));
   };
-  const history = useHistory();
+
   const auth = localStorage.getItem("auth");
-  console.log(auth);
+
   const logout = () => {
-    const auth = localStorage.clear("auth");
-    console.log(auth);
-    if (auth === undefined) {
-      history.push("/");
-    }
+    const authh = localStorage.clear("auth");
+    console.log(authh);
   };
 
   return (
     <>
       <BrowserRouter>
-        {/* --new navbar-- */}
-
         <Navbar light expand="md" className="navcolor">
           <NavbarBrand href="/">
             <img
@@ -131,9 +113,6 @@ const Navbarr = (props) => {
             </Nav>
 
             <NavbarText className="adminname text-white">
-              {/* <Button color="success" onClick={toggle} className="loginbutton">
-                Login
-              </Button> */}
               {auth ? (
                 <Button
                   color="success"
@@ -182,8 +161,6 @@ const Navbarr = (props) => {
           </Collapse>
         </Navbar>
 
-        {/* --new navbar-- */}
-
         <Approuter />
 
         <Modal isOpen={modal} toggle={toggle} className={className}>
@@ -208,15 +185,6 @@ const Navbarr = (props) => {
                     <p className="text-danger">* {errors.name.message}</p>
                   )}
                 </FormGroup>
-                {/* <input
-                  name="name"
-                  ref={register}
-                  placeholder="Enter user name"
-                  className="username"
-                />
-                {errors.name && (
-                  <small className="text-danger">*{errors.name.message}</small>
-                )}{" "} */}
               </Col>
               <Col>
                 <Label>Email :</Label>
@@ -235,16 +203,6 @@ const Navbarr = (props) => {
                     <p className="text-danger">* {errors.email.message}</p>
                   )}
                 </FormGroup>
-                {/* <input
-                  name="email"
-                  ref={register}
-                  placeholder="Enter Email"
-                  className="username"
-                />
-
-                {errors.email && (
-                  <small className="text-danger">*{errors.email.message}</small>
-                )} */}
               </Col>
               <Col className="space">
                 <Button className="loginbut" color="success">

@@ -1,10 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { order } from "../redux/actions/FetchData.js";
-
-import { Col, Row, Container, Button } from "reactstrap";
+import { Col, Container } from "reactstrap";
 import Moment from "react-moment";
-import { useHistory } from "react-router-dom";
+
 import { Table } from "reactstrap";
 import { myOrder } from "../redux/actions/FetchData";
 
@@ -13,10 +11,9 @@ const Myorder = () => {
     order: state.products.order,
   }));
   console.log(order);
-  const total = useSelector((state) => state.products.total);
 
   const dispatch = useDispatch();
-  const history = useHistory();
+
   useEffect(() => {
     dispatch(myOrder());
   }, [dispatch]);

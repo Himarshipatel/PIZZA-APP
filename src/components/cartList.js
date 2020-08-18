@@ -1,8 +1,7 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
-import { add, subtract, removeItemFromCart } from "../redux/actions/Action.js";
-import { Col, Row, Container, Button } from "reactstrap";
+import { Col, Row, Container } from "reactstrap";
 import Total from "./Total.js";
 import Formm from "./Form.js";
 
@@ -10,19 +9,7 @@ const CartList = () => {
   const { cart } = useSelector((state) => ({
     cart: state.products.cart,
   }));
-
-  const dispatch = useDispatch();
-  const addItem = (e, id) => {
-    dispatch(add(id));
-  };
-  const subtractItem = (e, id) => {
-    dispatch(subtract(id));
-  };
-
-  const removeItem = (e, id, amount) => {
-    dispatch(removeItemFromCart(id, amount));
-  };
-
+  console.log(cart);
   return (
     <Container fluid={true}>
       <Col className="orderdesc">
