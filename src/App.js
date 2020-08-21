@@ -3,10 +3,6 @@ import Navbarr from "./components/Navbar.js";
 import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
 import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
-import thunk from "redux-thunk";
-import rootReducer from "./redux/reducers/RootReducers";
-//import { persistStore, persistReducer } from "redux-persist";
 import { PersistGate } from "redux-persist/es/integration/react";
 import { store, persistor } from "./store/Configure";
 

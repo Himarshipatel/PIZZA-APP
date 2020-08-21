@@ -8,8 +8,6 @@ import storage from "redux-persist/lib/storage";
 const persistConfig = {
   key: "root",
   storage: storage,
-
-  rootReducer,
 };
 const middleware = applyMiddleware(thunk, logger);
 const pReducer = persistReducer(persistConfig, rootReducer);
