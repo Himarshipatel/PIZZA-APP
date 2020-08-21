@@ -12,9 +12,9 @@ let initialState = {
   authType: null,
 };
 
-function products(state = initialState, action) {
-  var foundIndex = 0;
-  var foundIndexCart = 0;
+function rootReducer(state = initialState, action) {
+  let foundIndex = 0;
+  let foundIndexCart = 0;
   var { item, cart, total } = state;
   switch (action.type) {
     case "FETCH_DATA_REQUEST":
@@ -34,13 +34,13 @@ function products(state = initialState, action) {
         ...state,
         loading: false,
         error: action.payload.error,
-        item: [],
       };
     case "ADD_TO_CART":
       foundIndex = item.findIndex((x) => x.id === action.itemToBeAdded);
       item[foundIndex]["quantity"] = 1;
       //item[foundIndex]["quantity"] = item[foundIndex]["quantity"];
       item[foundIndex]["product_id"] = item[foundIndex]["id"];
+
       cart.push(item[foundIndex]);
       total = total + item[foundIndex]["price"];
       return {
@@ -51,6 +51,7 @@ function products(state = initialState, action) {
       };
     case "ADD":
       foundIndex = item.findIndex((x) => x.id === action.itemInc);
+
       item[foundIndex]["quantity"] = item[foundIndex]["quantity"] + 1;
       foundIndexCart = cart.findIndex((x) => x.id === action.itemInc);
       cart[foundIndexCart]["quantity"] = item[foundIndex]["quantity"];
@@ -69,9 +70,14 @@ function products(state = initialState, action) {
           return obj.id !== item[foundIndex].id;
         });
         delete item[foundIndex]["quantity"];
+      } else if (item[foundIndex]["quantity"] == ["NaN"]) {
+        cart = cart.filter(function (obj) {
+          return obj.id !== item[foundIndex].id;
+        });
+        delete item[foundIndex]["quantity"];
       } else {
         foundIndexCart = cart.findIndex((x) => x.id === action.itemDec);
-        cart[foundIndexCart]["quantity"] = item[foundIndex]["quantity"];
+        cart[foundIndexCart]["quantity"] = item[foundIndex]["quantity"] - 1;
       }
       total = total - item[foundIndex]["price"];
       return {
@@ -130,4 +136,4 @@ function products(state = initialState, action) {
   }
 }
 
-export default products;
+export default rootReducer;

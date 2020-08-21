@@ -11,7 +11,7 @@ const ItemList = (props) => {
   const { item } = useSelector((state) => ({
     item: state.products.item,
   }));
-
+  console.log(item);
   const dispatch = useDispatch();
 
   const addToCartItem = (e, id) => {

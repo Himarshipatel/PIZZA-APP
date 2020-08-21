@@ -12,11 +12,17 @@ import {
 } from "./Action";
 
 export function fetchProducts() {
+  const tokenn = localStorage.getItem("auth");
+  const token = {
+    headers: { Authorization: `Bearer ${tokenn}` },
+  };
   return (dispatch) => {
     dispatch(fetchDataRequest());
     axios
       .get("http://127.0.0.1:8000/api/products")
       .then((response) => {
+        console.log(response);
+
         dispatch(fetchDataSuccess(response.data.data.products));
       })
       .catch((error) => {
