@@ -649,6 +649,9 @@ code {
 .tabell {
   text-align: center;
 }
+.myorder {
+  width: 210px;
+}
 @media only screen and (max-device-width: 320px) {
   .orderdesc {
     margin-top: 5px;
@@ -657,6 +660,9 @@ code {
     font-size: 6px;
     font-weight: bold;
   }
+  .myorder {
+    width: 160px;
+  }
 }
 @media only screen and (max-device-width: 375px) {
   .orderdesc {
@@ -664,5 +670,8 @@ code {
   }
   .tabell {
     font-size: 8px;
+  }
+  .myorder {
+    width: 180px;
   }
 }

@@ -69,7 +69,6 @@ const Navbarr = (props) => {
 
   const logout = () => {
     const authh = localStorage.clear("auth");
-    console.log(authh);
   };
 
   return (

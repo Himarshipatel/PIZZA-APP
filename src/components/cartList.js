@@ -9,7 +9,7 @@ const CartList = () => {
   const { cart } = useSelector((state) => ({
     cart: state.products.cart,
   }));
-  console.log(cart);
+
   return (
     <Container fluid={true}>
       <Col className="orderdesc">

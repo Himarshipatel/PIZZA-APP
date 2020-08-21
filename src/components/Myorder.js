@@ -10,7 +10,6 @@ const Myorder = () => {
   const { order } = useSelector((state) => ({
     order: state.products.order,
   }));
-  console.log(order);
 
   const dispatch = useDispatch();
 

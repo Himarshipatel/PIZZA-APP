@@ -9,7 +9,7 @@ const Popoverr = () => {
   const { cart } = useSelector((state) => ({
     cart: state.products.cart,
   }));
-  console.log(cart);
+
   const dispatch = useDispatch();
   const addItem = (e, id) => {
     dispatch(add(id));

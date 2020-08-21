@@ -137,8 +137,8 @@ export function myOrder() {
       .then((response) => {
         dispatch({ type: "myorderSuccess", order: response.data.data.orders });
       })
-      .catch((error) => {
-        toast.error(error.response.data.message, {
+      .catch(() => {
+        toast.error("order not fetch", {
           position: "top-center",
           autoClose: 5000,
           hideProgressBar: false,

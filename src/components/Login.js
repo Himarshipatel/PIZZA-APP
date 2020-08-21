@@ -3,7 +3,7 @@ import Banner from "./Banner";
 import { Redirect } from "react-router-dom";
 const Login = () => {
   const auth = localStorage.getItem("auth");
-  console.log(auth);
+
   return <div>{auth ? <Banner /> : <Redirect to="/" />}</div>;
 };
 
