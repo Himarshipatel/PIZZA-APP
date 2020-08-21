@@ -9,6 +9,7 @@ let initialState = {
   authenticated: false,
   username: [],
   email: [],
+  authType: null,
 };
 
 function products(state = initialState, action) {

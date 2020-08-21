@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import { addToCart, add, subtract } from "../actions/Action.js";
 import { toast } from "react-toastify";
 import {
   fetchDataRequest,
@@ -116,8 +116,8 @@ export function order({
         dispatch(orderSuccess(response));
 
         history.push("/success");
-        dispatch(fetchProducts());
-        dispatch(myOrder());
+        // dispatch(fetchProducts());
+        // dispatch(myOrder());
       })
       .catch((error) => {
         dispatch(orderError(error));

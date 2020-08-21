@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, BrowserRouter } from "react-router-dom";
-
+import { fetchProducts } from "../redux/actions/FetchData";
 import {
   Col,
   Button,
@@ -8,6 +8,7 @@ import {
   UncontrolledPopover,
   PopoverBody,
 } from "reactstrap";
+
 import * as Yup from "yup";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -51,7 +52,9 @@ const Navbarr = (props) => {
     email: Yup.string().email().required(),
   });
   const dispatch = useDispatch();
-
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
   const { register, handleSubmit, errors, control } = useForm({
     validationSchema: loginSchema,
   });
