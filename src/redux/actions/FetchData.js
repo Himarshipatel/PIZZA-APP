@@ -32,7 +32,6 @@ export function signinUser({ name, email, setModal }) {
     axios
       .post("http://127.0.0.1:8000/api/login", { name, email })
       .then((response) => {
-        console.log(response);
         dispatch(
           signinUserSuccess(
             response.data.data.user.name,
@@ -45,7 +44,6 @@ export function signinUser({ name, email, setModal }) {
           (token = response.data.data.user.api_token)
         );
 
-        console.log(token);
         setModal(false);
         toast.success("Login Successfull", {
           position: "top-center",
@@ -85,15 +83,10 @@ export function order({
   items,
   history,
 }) {
-  console.log(items);
-
   const tokenn = localStorage.getItem("auth");
   const token = {
     headers: { Authorization: `Bearer ${tokenn}` },
   };
-  console.log(token);
-  console.log(customer_name);
-  console.log(customer_email);
   return (dispatch) => {
     axios
       .post(
@@ -112,7 +105,6 @@ export function order({
       )
 
       .then((response) => {
-        console.log(response);
         dispatch(orderSuccess(response));
 
         history.push("/success");
@@ -130,7 +122,6 @@ export function order({
           draggable: true,
           progress: undefined,
         });
-        console.log(error.response.data.message);
       });
   };
 }
@@ -139,16 +130,23 @@ export function myOrder() {
   const token = {
     headers: { Authorization: `Bearer ${tokenn}` },
   };
-  console.log(token);
+
   return (dispatch) => {
     axios
       .get("http://127.0.0.1:8000/api/orders", token)
       .then((response) => {
-        console.log(response);
         dispatch({ type: "myorderSuccess", order: response.data.data.orders });
       })
       .catch((error) => {
-        console.log(error);
+        toast.error(error.response.data.message, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       });
   };
 }
