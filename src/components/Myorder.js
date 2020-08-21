@@ -53,7 +53,7 @@ const Myorder = () => {
                   <td>
                     {item.items.map((item, index) => (
                       <li key={index} className="pizzasubtotallist">
-                        {item.total}
+                        {item.product.name} : ${item.total}
                       </li>
                     ))}
                   </td>

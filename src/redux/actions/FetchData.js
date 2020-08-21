@@ -135,6 +135,7 @@ export function myOrder() {
     axios
       .get("http://127.0.0.1:8000/api/orders", token)
       .then((response) => {
+        console.log(response);
         dispatch({ type: "myorderSuccess", order: response.data.data.orders });
       })
       .catch(() => {
