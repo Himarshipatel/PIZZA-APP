@@ -10,11 +10,12 @@ let initialState = {
   username: [],
   email: [],
   authType: null,
+  loading: null,
 };
 
 function rootReducer(state = initialState, action) {
-  let foundIndex = 0;
-  let foundIndexCart = 0;
+  var foundIndex = 0;
+  var foundIndexCart = 0;
   var { item, cart, total } = state;
   switch (action.type) {
     case "FETCH_DATA_REQUEST":
@@ -37,11 +38,14 @@ function rootReducer(state = initialState, action) {
       };
     case "ADD_TO_CART":
       foundIndex = item.findIndex((x) => x.id === action.itemToBeAdded);
+
       item[foundIndex]["quantity"] = 1;
+
       //item[foundIndex]["quantity"] = item[foundIndex]["quantity"];
       item[foundIndex]["product_id"] = item[foundIndex]["id"];
 
       cart.push(item[foundIndex]);
+
       total = total + item[foundIndex]["price"];
       return {
         ...state,
@@ -51,10 +55,13 @@ function rootReducer(state = initialState, action) {
       };
     case "ADD":
       foundIndex = item.findIndex((x) => x.id === action.itemInc);
+      console.log(foundIndex);
+      item[foundIndex]["quantity"] = item[foundIndex]["quantity"];
 
-      item[foundIndex]["quantity"] = item[foundIndex]["quantity"] + 1;
       foundIndexCart = cart.findIndex((x) => x.id === action.itemInc);
-      cart[foundIndexCart]["quantity"] = item[foundIndex]["quantity"];
+      cart[foundIndexCart]["quantity"] += 1;
+      //cart[foundIndexCart]["quantity"] = item[foundIndex]["quantity"];
+
       total = total + item[foundIndex]["price"];
       return {
         ...state,
@@ -64,20 +71,28 @@ function rootReducer(state = initialState, action) {
       };
     case "SUBTRACT":
       foundIndex = item.findIndex((x) => x.id === action.itemDec);
-      item[foundIndex]["quantity"] = item[foundIndex]["quantity"] - 1;
-      if (item[foundIndex]["quantity"] === 0) {
+      console.log(foundIndex);
+      //item[foundIndex]["quantity"] -= 1;
+      //console.log(item[foundIndex]["quantity"]);
+      if (item[foundIndex]["quantity"] <= 1) {
         cart = cart.filter(function (obj) {
           return obj.id !== item[foundIndex].id;
         });
-        delete item[foundIndex]["quantity"];
-      } else if (item[foundIndex]["quantity"] == ["NaN"]) {
-        cart = cart.filter(function (obj) {
-          return obj.id !== item[foundIndex].id;
-        });
+        console.log(cart);
         delete item[foundIndex]["quantity"];
       } else {
+        item[foundIndex]["quantity"] = item[foundIndex]["quantity"];
+        // cart[foundIndexCart]["quantity"] = item[foundIndex]["quantity"];
         foundIndexCart = cart.findIndex((x) => x.id === action.itemDec);
-        cart[foundIndexCart]["quantity"] = item[foundIndex]["quantity"] - 1;
+        cart[foundIndexCart]["quantity"] -= 1;
+        console.log(cart[foundIndexCart]["quantity"]);
+        if (cart[foundIndexCart]["quantity"] === 0) {
+          cart = cart.filter(function (obj) {
+            return obj.id !== item[foundIndex].id;
+          });
+          console.log(cart);
+          delete item[foundIndex]["quantity"];
+        }
       }
       total = total - item[foundIndex]["price"];
       return {

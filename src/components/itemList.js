@@ -11,6 +11,9 @@ const ItemList = (props) => {
   const { item } = useSelector((state) => ({
     item: state.products.item,
   }));
+  const { cart } = useSelector((state) => ({
+    cart: state.products.cart,
+  }));
   console.log(item);
   const dispatch = useDispatch();
 
@@ -66,41 +69,52 @@ const ItemList = (props) => {
                   </Col>
 
                   <p className="price">Price : ${i.price}</p>
-                  {!i.quantity ? (
-                    <Button
-                      color="danger"
-                      onClick={(e) => addToCartItem(e, i.id)}
-                    >
-                      Add to cart
-                    </Button>
-                  ) : (
-                    <Row>
-                      <Col sm="4">
-                        <Button
-                          onClick={(e) => subtractItem(e, i.id)}
-                          className="butnum"
-                          color="success"
-                        >
-                          -
-                        </Button>
-                      </Col>
-                      <Col sm="4">
+                  {/* {!i.quantity ? ( */}
+                  <Button
+                    color="danger"
+                    onClick={(e) => addToCartItem(e, i.id)}
+                  >
+                    Add to cart
+                  </Button>
+                  {/* ) : ( */}
+                  <Row>
+                    <Col sm="4">
+                      <Button
+                        onClick={(e) => subtractItem(e, i.id)}
+                        className="butnum"
+                        color="success"
+                      >
+                        -
+                      </Button>
+                    </Col>
+
+                    {/* {cart.map((index) => (
+                      <Col sm="4" key={index.id}>
                         <Button className="butnum" color="success">
-                          {i.quantity}
+                          {index.quantity}
                         </Button>
                       </Col>
-                      <Col sm="4">
-                        <Button
-                          className="butnum"
-                          color="success"
-                          onClick={(e) => addItem(e, i.id)}
-                        >
-                          +
-                        </Button>
-                      </Col>
-                    </Row>
-                  )}
+                    ))} */}
+
+                    <Col sm="4">
+                      <Button
+                        className="butnum"
+                        color="success"
+                        onClick={(e) => addItem(e, i.id)}
+                      >
+                        +
+                      </Button>
+                    </Col>
+                  </Row>
+                  {/* )} */}
                 </Card>
+              ))}
+              {cart.map((index) => (
+                <Col sm="4" key={index.id}>
+                  <Button className="butnum" color="success">
+                    {index.quantity}
+                  </Button>
+                </Col>
               ))}
             </Row>
           </Container>
