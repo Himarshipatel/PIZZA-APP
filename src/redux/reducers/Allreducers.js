@@ -10,7 +10,6 @@ let initialState = {
   username: [],
   email: [],
   authType: null,
-  loading: null,
 };
 
 function rootReducer(state = initialState, action) {
@@ -43,8 +42,12 @@ function rootReducer(state = initialState, action) {
 
       //item[foundIndex]["quantity"] = item[foundIndex]["quantity"];
       item[foundIndex]["product_id"] = item[foundIndex]["id"];
-
+      //foundIndexCart = cart.findIndex((x) => x.id === action.itemToBeAdded);
+      // if (action.itemToBeAdded) {
       cart.push(item[foundIndex]);
+      // } else {
+      //   item[foundIndex]["quantity"] += 1;
+      // }
 
       total = total + item[foundIndex]["price"];
       return {

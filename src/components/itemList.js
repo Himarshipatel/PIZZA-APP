@@ -14,7 +14,7 @@ const ItemList = (props) => {
   const { cart } = useSelector((state) => ({
     cart: state.products.cart,
   }));
-  console.log(item);
+  console.log(cart);
   const dispatch = useDispatch();
 
   const addToCartItem = (e, id) => {
@@ -46,7 +46,7 @@ const ItemList = (props) => {
           </div>
           <Container fluid={true}>
             <Row className="carddrow">
-              {item.map((i) => (
+              {item.foreach((i) => (
                 <Card key={i.id} className="cardd">
                   <Col className="Imagecol">
                     <Image
@@ -69,52 +69,50 @@ const ItemList = (props) => {
                   </Col>
 
                   <p className="price">Price : ${i.price}</p>
-                  {/* {!i.quantity ? ( */}
-                  <Button
-                    color="danger"
-                    onClick={(e) => addToCartItem(e, i.id)}
-                  >
-                    Add to cart
-                  </Button>
-                  {/* ) : ( */}
-                  <Row>
-                    <Col sm="4">
-                      <Button
-                        onClick={(e) => subtractItem(e, i.id)}
-                        className="butnum"
-                        color="success"
-                      >
-                        -
-                      </Button>
-                    </Col>
 
-                    {/* {cart.map((index) => (
-                      <Col sm="4" key={index.id}>
-                        <Button className="butnum" color="success">
-                          {index.quantity}
+                  {!i.quantity ? (
+                    <Button
+                      color="danger"
+                      onClick={(e) => addToCartItem(e, i.id)}
+                    >
+                      Add to cart
+                    </Button>
+                  ) : (
+                    <Row>
+                      <Col sm="4">
+                        <Button
+                          onClick={(e) => subtractItem(e, i.id)}
+                          className="butnum"
+                          color="success"
+                        >
+                          -
                         </Button>
                       </Col>
-                    ))} */}
 
-                    <Col sm="4">
-                      <Button
-                        className="butnum"
-                        color="success"
-                        onClick={(e) => addItem(e, i.id)}
-                      >
-                        +
-                      </Button>
-                    </Col>
-                  </Row>
-                  {/* )} */}
+                      <Col sm="4">
+                        {cart.map((i) => (
+                          <Col className="quantitynum">
+                            <button onClick={(e) => subtractItem(e, i.id)}>
+                              -
+                            </button>
+                            <button>{i.quantity}</button>
+                            <button onClick={(e) => addItem(e, i.id)}>+</button>
+                          </Col>
+                        ))}
+                      </Col>
+
+                      <Col sm="4">
+                        <Button
+                          className="butnum"
+                          color="success"
+                          onClick={(e) => addItem(e, i.id)}
+                        >
+                          +
+                        </Button>
+                      </Col>
+                    </Row>
+                  )}
                 </Card>
-              ))}
-              {cart.map((index) => (
-                <Col sm="4" key={index.id}>
-                  <Button className="butnum" color="success">
-                    {index.quantity}
-                  </Button>
-                </Col>
               ))}
             </Row>
           </Container>
